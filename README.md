@@ -13,4 +13,11 @@
 - Build Command: `test -f dist/index.html`
 - Publish Directory: `dist`
 
-기존에 만든 Python Web Service는 Static Site로 유형을 변경할 수 없으므로, 새 Static Site 또는 Blueprint를 만들어야 합니다. 기존 서비스는 새 배포를 확인한 뒤 필요에 따라 정리하세요.
+### 기존 Python Web Service 사용하기
+
+기존 서비스에서 배포하려면 Render의 **Settings > Build & Deploy**에서 브랜치가 `main`이고 Root Directory가 비어 있는지 확인한 뒤 다음 명령을 설정합니다.
+
+- Build Command: `pip install -r requirements.txt`
+- Start Command: `python -m http.server $PORT --bind 0.0.0.0 --directory dist`
+
+`requirements.txt`는 의존성이 없으므로 비어 있습니다. 설정을 저장하고 최신 커밋을 수동으로 다시 배포하세요. `render.yaml`은 Blueprint로 새 정적 사이트를 만들 때 사용되며, 기존 Web Service의 설정을 자동으로 바꾸지 않습니다.
